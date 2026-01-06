@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Serilog.Sinks.Ntfy/Serilog.Sinks.Ntfy.csproj" />
+  </Folder>
+</Solution>

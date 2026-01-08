@@ -17,7 +17,7 @@
 
 ### Quick start
 
-Install the package from NuGet and configure Serilog in your application:
+Install the package from NuGet and configure Serilog in your application: https://www.nuget.org/packages/Serilog.Sinks.Ntfy
 
 ### Configuration notes
 

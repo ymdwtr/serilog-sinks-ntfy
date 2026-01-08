@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0;netstandard2.0</TargetFrameworks>
     <RootNamespace>Serilog.Sinks.Ntfy</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<Version>1.0.0</Version>
+	<LangVersion>8.0</LangVersion>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Initial release of Serilog.Sinks.Ntfy.</PackageReleaseNotes>
+    <PackageReleaseNotes>Multi-Targeting Support</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/ymdwtr/serilog-sinks-ntfy.git</RepositoryUrl>
     <Copyright>Copyright (c) ymdwtr 2026</Copyright>
     <Authors>ymdwtr</Authors>
@@ -28,7 +28,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog" Version="4.3.0" />  
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Threading.Channels" Version="10.0.1" />
   </ItemGroup>
 
 </Project>

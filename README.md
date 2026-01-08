@@ -25,6 +25,10 @@ Install the package from NuGet and configure Serilog in your application:
 - When using `accessToken`, pass an empty string for the user parameter (internally the sink distinguishes auth mode).
 - Tune `maxRetryCount`, `retryInterval`, `channelCapacity`, and `flushOnClose` to match reliability and throughput requirements.
 
+### Note:
+Although netstandard2.0 is supported, this package relies on
+System.Threading.Channels which is provided via NuGet.
+
 ## License
 
 This project is open source — see the repository license for details.

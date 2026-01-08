@@ -2,9 +2,14 @@
 using Serilog.Debugging;
 using Serilog.Events;
 using Serilog.Formatting;
+using System;
+using System.IO;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Channels;
+using System.Threading.Tasks;
 
 namespace Serilog.Sinks.Ntfy
 {
@@ -19,7 +24,7 @@ namespace Serilog.Sinks.Ntfy
         private readonly Channel<LogEvent> _channel;
         private readonly HttpClient _httpClient;
         private readonly Uri _endpoint;
-        private readonly CancellationTokenSource _cts = new();
+        private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         private readonly Task _worker;
         private readonly bool _flushOnClose;
         private readonly int _maxRetryCount;

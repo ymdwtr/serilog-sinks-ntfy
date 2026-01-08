@@ -3,6 +3,7 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Display;
+using System;
 
 namespace Serilog.Sinks.Ntfy
 {
@@ -49,7 +50,7 @@ namespace Serilog.Sinks.Ntfy
             bool flushOnClose = true,
             int channelCapacity = 1000)
         {
-            ArgumentNullException.ThrowIfNull(sinkConfiguration);
+            if (sinkConfiguration == null) throw new ArgumentNullException(nameof(sinkConfiguration));
 
             if (string.IsNullOrEmpty(baseUrl))
             {
@@ -107,7 +108,7 @@ namespace Serilog.Sinks.Ntfy
             bool flushOnClose = true,
             int channelCapacity = 1000)
         {
-            ArgumentNullException.ThrowIfNull(sinkConfiguration);
+            if (sinkConfiguration == null) throw new ArgumentNullException(nameof(sinkConfiguration));
 
             if (string.IsNullOrEmpty(baseUrl))
             {
@@ -121,7 +122,7 @@ namespace Serilog.Sinks.Ntfy
 
             ValidateCredentials(user, password);
 
-            ArgumentNullException.ThrowIfNull(formatter, nameof(formatter));
+            if (formatter == null) throw new ArgumentNullException(nameof(formatter));
 
             return sinkConfiguration.Sink(new NtfySink(baseUrl, topic, tags, user, password, formatter, flushOnClose, maxRetryCount, retryInterval, channelCapacity),
                 restrictedToMinimumLevel,
@@ -165,7 +166,7 @@ namespace Serilog.Sinks.Ntfy
             bool flushOnClose = true,
             int channelCapacity = 1000)
         {
-            ArgumentNullException.ThrowIfNull(sinkConfiguration);
+            if (sinkConfiguration == null) throw new ArgumentNullException(nameof(sinkConfiguration));
 
             if (string.IsNullOrEmpty(baseUrl))
             {
@@ -224,7 +225,7 @@ namespace Serilog.Sinks.Ntfy
             bool flushOnClose = true,
             int channelCapacity = 1000)
         {
-            ArgumentNullException.ThrowIfNull(sinkConfiguration);
+            if (sinkConfiguration == null) throw new ArgumentNullException(nameof(sinkConfiguration));
 
             if (string.IsNullOrEmpty(baseUrl))
             {
@@ -241,7 +242,7 @@ namespace Serilog.Sinks.Ntfy
                 throw new ArgumentException("Access token cannot be null or empty.", nameof(accessToken));
             }
 
-            ArgumentNullException.ThrowIfNull(formatter, nameof(formatter));
+            if (formatter == null) throw new ArgumentNullException(nameof(formatter));
 
             return sinkConfiguration.Sink(new NtfySink(baseUrl, topic, tags, string.Empty, accessToken, formatter, flushOnClose, maxRetryCount, retryInterval, channelCapacity),
                 restrictedToMinimumLevel,
